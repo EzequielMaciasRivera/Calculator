@@ -11,10 +11,10 @@
 package com.tis.mx.application.controller;
 
 
+import java.util.List;
 import com.tis.mx.application.dto.InitialInvestmentDto;
 import com.tis.mx.application.dto.InvestmentYieldDto;
 import com.tis.mx.application.service.CompoundInterestCalculator;
-import java.util.List;
 
 /**
  * The Class ApplicationController.
@@ -32,7 +32,7 @@ public class ApplicationController {
   public ApplicationController(CompoundInterestCalculator calculator) {
     this.calculator = calculator;
   }
-
+ 
   /**
    * Creates the table yield.
    *
