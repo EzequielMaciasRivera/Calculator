@@ -23,12 +23,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class InitialInvestmentDto {
+  /**
   double initialInvestment;
   double yearlyInput;
   int yearlyInpuntIncrement;
   float investmentYield;
   int investmentYears;
   
+  **/
+  private Double  initialInvestment;
+  private Double yearlyInput;
+  private Integer yearlyInpuntIncrement;
+  private Float investmentYield;
+  private Integer investmentYears;
   @Override
   public String toString() {
     return "InitialInvestmentDto [initialInvestment=" + initialInvestment + ", yearlyInput="

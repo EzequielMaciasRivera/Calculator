@@ -38,7 +38,7 @@ public class CompoundInterestCalculatorImpl implements CompoundInterestCalculato
     Double finalBalance = 0.00;
     ArrayList<InvestmentYieldDto> investmentYieldList = new ArrayList<>();
     double aux = 0.00;
-    for (int i = 0; i < initialInvestmentDto.getInitialInvestment(); i++) {
+    for (int i = 0; i < initialInvestmentDto.getInvestmentYears(); i++) {
       // investmentYear ++;
       investmentYear = i + 1;
       yearlyInput = initialInvestmentDto.getYearlyInput() + aux;
