@@ -31,19 +31,10 @@ public class InitialInvestmentDto {
   int investmentYears;
   
   **/
-  private Double  initialInvestment;
-  private Double yearlyInput;
-  private Integer yearlyInpuntIncrement;
+  private Double   initialInvestment;
+  private Double   yearlyInput;
+  private Integer yearlyInputIncrement;
   private Float investmentYield;
   private Integer investmentYears;
-  @Override
-  public String toString() {
-    return "InitialInvestmentDto [initialInvestment=" + initialInvestment + ", yearlyInput="
-        + yearlyInput + ", yearlyInpuntIncrement=" + yearlyInpuntIncrement + ", investmentYield="
-        + investmentYield + ", investmentYears=" + investmentYears + "]";
-  }
-
-  
- 
    
 }

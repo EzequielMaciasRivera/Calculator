@@ -43,7 +43,7 @@ public class ApplicationControllerTest {
 
     this.initialInvestment.setInitialInvestment(5000.00);
     this.initialInvestment.setYearlyInput(3000.00); 
-    this.initialInvestment.setYearlyInpuntIncrement(1);
+    this.initialInvestment.setYearlyInputIncrement(1);
     this.initialInvestment.setInvestmentYears(5); 
     this.initialInvestment.setInvestmentYield(0.21f);  
   }
