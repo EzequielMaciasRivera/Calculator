@@ -1,17 +1,13 @@
-/* 
-* This program is free software: you can redistribute it and/or modify  
-* it under the terms of the GNU General Public License as published by  
-* the Free Software Foundation, version 3.
-*
-* This program is distributed in the hope that it will be useful, but 
-* WITHOUT ANY WARRANTY; without even the implied warranty of 
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
-* General Public License for more details.
-*
-* Nombre de archivo: ApplicationControllerTest.java
-* Autor: ezmacias
-* Fecha de creación: 9 sep 2021
-*/
+/*
+ * This program is free software: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ *
+ * Nombre de archivo: ApplicationControllerTest.java Autor: ezmacias Fecha de creación: 9 sep 2021
+ */
 package com.tis.mx.application.controller;
 
 import static org.junit.Assert.assertEquals;
@@ -29,9 +25,7 @@ public class ApplicationControllerTest {
   private InitialInvestmentDto initialInvestment;
   private CompoundInterestCalculator calculator;
 
-  /**
-   * Creates the values before to test.
-   */
+
   @Before
   public void createValuesBeforeToTest() {
     // Crear calculadora
@@ -42,22 +36,39 @@ public class ApplicationControllerTest {
     this.initialInvestment = new InitialInvestmentDto();
 
     this.initialInvestment.setInitialInvestment(5000.00);
-    this.initialInvestment.setYearlyInput(3000.00); 
+    this.initialInvestment.setYearlyInput(3000.00);
     this.initialInvestment.setYearlyInputIncrement(1);
-    this.initialInvestment.setInvestmentYears(5); 
-    this.initialInvestment.setInvestmentYield(0.21f);  
+    this.initialInvestment.setInvestmentYears(5);
+    this.initialInvestment.setInvestmentYield(0.21f);
   }
- 
+
   @Test
   public void shouldGenerateTableYield() {
     List<InvestmentYieldDto> tableYield = controller.createTableYield(initialInvestment);
 
     assertEquals(5, tableYield.size());
-    
+
     InvestmentYieldDto firstYear = tableYield.get(0);
-    assertEquals(Double.valueOf(5000.00),firstYear.getInitialInvestment());
-    assertEquals(Double.valueOf(3000.00),firstYear.getYearlyInput());
-    assertEquals(Double.valueOf(1680.00),firstYear.getInvestmentYield()); 
-    assertEquals(Double.valueOf(9680.00),firstYear.getFinalBalance());
+    assertEquals(Double.valueOf(5000.00), firstYear.getInitialInvestment());
+    assertEquals(Double.valueOf(3000.00), firstYear.getYearlyInput());
+    assertEquals(Double.valueOf(1680.00), firstYear.getInvestmentYield());
+    assertEquals(Double.valueOf(9680.00), firstYear.getFinalBalance());
+  }
+
+  @Test
+  public void shouldThrowValidationException() {
+    InitialInvestmentDto badInputRequest = new InitialInvestmentDto();
+    badInputRequest.setInitialInvestment(0.00);
+    badInputRequest.setYearlyInput(3000.00);
+    badInputRequest.setYearlyInputIncrement(1);
+    badInputRequest.setInvestmentYears(5);
+    badInputRequest.setInvestmentYield(21f);
+
+    try {
+      controller.createTableYield("application/json", badInputRequest);
+    } catch (Exception ex) {
+      assertEquals("El cálculo no puede ser ejecutado", ex.getMessage());
+    }
+
   }
 }
